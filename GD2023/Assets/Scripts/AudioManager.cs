@@ -29,14 +29,15 @@ public class AudioManager : MonoBehaviour
             sound.source.pitch = sound.pitch;
             sound.source.loop = sound.loop;
         }
+
+        Play("Theme");
     }
-    
+   
+
     // Start is called before the first frame update
     void Start()
     {
-        // Play Menu Music
-        Play("Theme");
-        
+              
     }
 
     public void Play(string name)
@@ -49,8 +50,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        Debug.Log(s == null);
-
+        s.source.Play();
     }
     public void Stop(string name)
     {
