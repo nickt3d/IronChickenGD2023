@@ -12,13 +12,18 @@ namespace MoreMountains.TopDownEngine
 	public class AIDecisionDistanceToTarget : AIDecision
 	{
 		/// The possible comparison modes
-		public enum ComparisonModes { StrictlyLowerThan, LowerThan, Equals, GreaterThan, StrictlyGreaterThan }
+		public enum ComparisonModes { StrictlyLowerThan, LowerThan, Equals, GreaterThan, StrictlyGreaterThan, Between }
 		/// the comparison mode
 		[Tooltip("the comparison mode")]
 		public ComparisonModes ComparisonMode = ComparisonModes.GreaterThan;
 		/// the distance to compare with
 		[Tooltip("the distance to compare with")]
 		public float Distance;
+
+        [Tooltip("For the Between mode only")]
+        public float MinDist;
+        [Tooltip("For the Between mode only")]
+        public float MaxDist;
         
 		/// <summary>
 		/// On Decide we check our distance to the Target
@@ -61,6 +66,10 @@ namespace MoreMountains.TopDownEngine
 			if (ComparisonMode == ComparisonModes.StrictlyGreaterThan)
 			{
 				return (distance > Distance);
+			}
+			if (ComparisonMode == ComparisonModes.Between)
+			{
+				return (distance >= MinDist && distance <= MaxDist);
 			}
 			return false;
 		}
