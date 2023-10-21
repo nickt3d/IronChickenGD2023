@@ -18,7 +18,7 @@ public class InfluenceController : MonoBehaviour
     [SerializeField] private VolumeProfile holyInfluenceVolume;
     
     private float _influenceAmount;
-    private SphereCollider _influenceArea;
+    private CapsuleCollider _influenceArea;
     private Volume _influenceVolume;
     
     //Clamp influence in this range
@@ -35,9 +35,17 @@ public class InfluenceController : MonoBehaviour
 
         _influenceAmount = 25f;
         _influenceVolume = GetComponent<Volume>();
-        _influenceArea = GetComponent<SphereCollider>();
+        _influenceArea = GetComponent<CapsuleCollider>();
 
-        _influenceVolume.profile = bloodInfluenceVolume;
+        if (_influenceType == InfluenceType.holy)
+        {
+            _influenceVolume.profile = holyInfluenceVolume;
+        }
+        else
+        {
+            _influenceVolume.profile = bloodInfluenceVolume;
+        }
+
         influenceDecayTimer = 0;
     }
 
@@ -53,6 +61,8 @@ public class InfluenceController : MonoBehaviour
         if (influenceDecayTimer >= _influenceAmount)
         {
             DecayInfluence();
+            //reset timer
+            influenceDecayTimer = 0f;
         }
         else
         {
