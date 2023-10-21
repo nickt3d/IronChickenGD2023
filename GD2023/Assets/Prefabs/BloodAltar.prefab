@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _influenceType: 1
-  areadisplay: {fileID: 0}
+  areadisplay: {fileID: 8433084394027115123}
   bloodInfluenceVolume: {fileID: 11400000, guid: bbb4164db0b97e449bfd7281eb4409e4,
     type: 2}
   holyInfluenceVolume: {fileID: 11400000, guid: 8f078ba0b5e2d0b4abc0d8d1fc040c9b,
@@ -334,7 +334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8433084394027115123
 Transform:
   m_ObjectHideFlags: 0
