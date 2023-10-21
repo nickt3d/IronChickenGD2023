@@ -35,6 +35,8 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         // Play Menu Music
+        Play("Theme");
+        
     }
 
     public void Play(string name)
@@ -46,6 +48,8 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found");
             return;
         }
+
+        Debug.Log(s == null);
 
     }
     public void Stop(string name)
