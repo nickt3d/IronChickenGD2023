@@ -1,24 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class MenuManager : MonoBehaviour
 {
+    public List<GameObject> menuButtons;
+
     public void ExitGame()
     {
         Application.Quit();
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void ResetButtonScale()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foreach (GameObject btn in menuButtons)
+        {
+            btn.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 }
