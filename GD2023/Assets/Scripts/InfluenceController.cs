@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum InfluenceType
+{
+    none,
+    blood,
+    holy
+}
 public class InfluenceController : MonoBehaviour
 {
+    [SerializeField]
+    private InfluenceType _influenceType;
     private float _influence;
 
     private SphereCollider _influenceArea;
@@ -16,14 +24,15 @@ public class InfluenceController : MonoBehaviour
 
         _influenceArea = GetComponent<SphereCollider>();
     }
-    
-    void Update()
-    {
-        
-    }
 
     public void IncreaseInfluence(float amount)
     {
         _influence += amount;
     }
+
+    public void DecreaseInfluence()
+    {
+        
+    }
+    
 }
