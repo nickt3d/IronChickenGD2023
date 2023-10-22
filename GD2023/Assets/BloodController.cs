@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,12 +12,14 @@ public class BloodController : MonoBehaviour
 
     private float decayTimer;
 
+    public Action<int> OnSacrifice;
 
     // Start is called before the first frame update
     void Start()
     {
         _bloodAmount = 15;
         decayTimer = 3;
+        OnSacrifice += RemoveBlood;
     }
 
     // Update is called once per frame
@@ -39,13 +42,13 @@ public class BloodController : MonoBehaviour
         _bloodAmount = Mathf.Clamp(_bloodAmount+amount, 0, _bloodMax);
     }
 
-    void RemoveBlood(int amount)
+    public void RemoveBlood(int amount)
     {
         _bloodAmount = Mathf.Clamp(_bloodAmount-amount, 0, _bloodMax);
     }
 
-    public void OnSacrifice(int cost)
+    public int GetAmount()
     {
-        RemoveBlood(cost);
+        return _bloodAmount;
     }
 }

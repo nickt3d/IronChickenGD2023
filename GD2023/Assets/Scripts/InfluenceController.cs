@@ -32,7 +32,7 @@ public class InfluenceController : MonoBehaviour
 
     private int decay = 1;
 
-    [SerializeField] private SphereCollider SacrificeZone;
+    //[SerializeField] private SphereCollider SacrificeZone;
 
     public Action<int> OnUpgrade;
     
