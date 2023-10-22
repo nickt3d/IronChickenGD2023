@@ -1,24 +1,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
 public class CharacterBloodSacrifice : MonoBehaviour
 {
-
+    [SerializeField]
     private InfluenceController _influenceController;
     
-    public int cost;
-    
-    public Action<int> sacrificeBlood;
+    private int cost;
 
+    private bool canSacrifice = false;
+
+    public Action OnSacrifice;
     private void Start()
     {
-        cost = 10;
-        sacrificeBlood += _influenceController.OnUpgrade;
+        cost = 10; //pull the cost from the influence controller
+        canSacrifice = false;
     }
 
+    void Update()
+    {
+        if (canSacrifice)
+        {
+            //Show the prompt for sacrificing blood on HUD
+            Sacrificed();
+        }
+    }
+    
     // Update is called once per frame
     void OnTriggerEnter(Collider collider)
     {
@@ -26,7 +37,15 @@ public class CharacterBloodSacrifice : MonoBehaviour
         {  
             //Allow player to sacrifice blood at the alter
             var playerBlood = collider.GetComponent<BloodController>();
-            sacrificeBlood += playerBlood.OnSacrifice;
+            if (playerBlood.GetAmount() >= cost)
+            {
+                OnSacrifice += () => playerBlood.OnSacrifice.Invoke(cost);
+                canSacrifice = true;
+            }
+            else
+            {
+                //not enough blood display
+            }
         }
     }
 
@@ -34,10 +53,17 @@ public class CharacterBloodSacrifice : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            //Allow player to sacrifice blood at the alter
-            var playerBlood = collider.GetComponent<BloodController>();
-            sacrificeBlood -= playerBlood.OnSacrifice;
-            
+            OnSacrifice = null;
+            canSacrifice = false;
         }
     }
+
+    public void Sacrificed()
+    {
+        OnSacrifice.Invoke();
+        _influenceController.UpdateInfluence(5);
+        
+        canSacrifice = false;
+    }
+
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,27 +12,52 @@ public class BloodController : MonoBehaviour
 
     private float decayTimer;
 
+    public Action<int> OnSacrifice;
+
+    public bool safeZone;
+    public bool dangerZone;
 
     // Start is called before the first frame update
     void Start()
     {
         _bloodAmount = 15;
         decayTimer = 3;
+        OnSacrifice += RemoveBlood;
+        safeZone = false;
+        dangerZone = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Decay Blood
-        if (decayTimer <= 0)
+        if (!safeZone)
         {
-            RemoveBlood(1);
-            decayTimer = 3;
+            if (decayTimer <= 0)
+            {
+                if (dangerZone)
+                {
+                    RemoveBlood(1);
+                    decayTimer = 1;
+                }
+                else
+                {
+                    RemoveBlood(1);
+                    decayTimer = 3;
+                }
+
+                
+            }
+            else
+            {
+                decayTimer -= Time.deltaTime;
+            }
         }
         else
         {
-            decayTimer -= Time.deltaTime;
+            decayTimer = 3;
         }
+
     }
 
     public void AddBlood(int amount)
@@ -39,13 +65,14 @@ public class BloodController : MonoBehaviour
         _bloodAmount = Mathf.Clamp(_bloodAmount+amount, 0, _bloodMax);
     }
 
-    void RemoveBlood(int amount)
+    public void RemoveBlood(int amount)
     {
         _bloodAmount = Mathf.Clamp(_bloodAmount-amount, 0, _bloodMax);
+        Debug.Log("Blood Remaining: " + _bloodAmount);
     }
 
-    public void OnSacrifice(int cost)
+    public int GetAmount()
     {
-        RemoveBlood(cost);
+        return _bloodAmount;
     }
 }
