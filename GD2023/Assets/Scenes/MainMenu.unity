@@ -4651,7 +4651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Blood
+  m_text: Blood Rush
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7788fd76cbd7edd48a04f3193f0c8738, type: 2}
   m_sharedMaterial: {fileID: 8313286028131939748, guid: 7788fd76cbd7edd48a04f3193f0c8738,
