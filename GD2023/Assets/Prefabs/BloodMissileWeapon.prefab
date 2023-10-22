@@ -142,7 +142,7 @@ MonoBehaviour:
   ReticleType: 1
   Reticle: {fileID: 1000010525066036, guid: d7cfa93062f5dce40945874bdd1e9fa2, type: 3}
   ReticleDistance: 0
-  ReticleHeight: 0
+  ReticleHeight: 1
   ReticleAtMousePosition: 1
   RotateReticle: 0
   ReplaceMousePointer: 1
@@ -153,7 +153,7 @@ MonoBehaviour:
   CameraTargetMaxDistance: 5
   CameraTargetSpeed: 5
   Unrestricted3DAim: 0
-  ReticleMovesWithSlopes: 0
+  ReticleMovesWithSlopes: 1
   ReticleObstacleMask:
     serializedVersion: 2
     m_Bits: 197377
