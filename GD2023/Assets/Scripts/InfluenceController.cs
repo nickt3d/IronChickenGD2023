@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,9 +30,11 @@ public class InfluenceController : MonoBehaviour
 
     private float influenceDecayTimer;
 
-    private float decay = 1f;
+    private int decay = 1;
 
     [SerializeField] private SphereCollider SacrificeZone;
+
+    public Action<int> OnUpgrade;
     
     void Start()
     {
@@ -52,9 +55,11 @@ public class InfluenceController : MonoBehaviour
         }
 
         influenceDecayTimer = 0;
+
+        OnUpgrade += UpdateInfluence;
     }
 
-    public void UpdateInfluence(float amount)
+    public void UpdateInfluence(int amount)
     {
         _influenceAmount = Mathf.Clamp(_influenceAmount+amount, _minInfluence, _maxInfluence);
         _influenceArea.radius = _influenceAmount;
@@ -88,7 +93,6 @@ public class InfluenceController : MonoBehaviour
     void DecayInfluence()
     {
         UpdateInfluence(-decay);
-
     }
 
 }

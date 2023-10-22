@@ -10,6 +10,8 @@ public class BloodController : MonoBehaviour
     private int _bloodMax = 50; //This can be increased by sacrificing blood at special alters
 
     private float decayTimer;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,5 +42,10 @@ public class BloodController : MonoBehaviour
     void RemoveBlood(int amount)
     {
         _bloodAmount = Mathf.Clamp(_bloodAmount-amount, 0, _bloodMax);
+    }
+
+    public void OnSacrifice(int cost)
+    {
+        RemoveBlood(cost);
     }
 }
