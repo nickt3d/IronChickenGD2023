@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Tools;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -22,8 +24,10 @@ public class InfluenceController : MonoBehaviour
     private CapsuleCollider _influenceArea;
     private Volume _influenceVolume;
     private ParticleSystem _influenceParticles;
-    
-    
+
+    [SerializeField] private TextMeshProUGUI influenceDisplay;
+
+
     //Clamp influence in this range
     private float _minInfluence = 25f;
     private float _maxInfluence = 100f;
@@ -35,6 +39,8 @@ public class InfluenceController : MonoBehaviour
     //[SerializeField] private SphereCollider SacrificeZone;
 
     public Action<int> OnUpgrade;
+    
+    private bool active = false;
     
     void Start()
     {
@@ -66,6 +72,12 @@ public class InfluenceController : MonoBehaviour
         var shape = _influenceParticles.shape;
         shape.radius = _influenceAmount;
 
+        if (active)
+        {
+            influenceDisplay.SetText("Influence: " + _influenceAmount);
+        }
+
+
         if (amount > 0)
         {
             Debug.Log("Influence Increased to: " + _influenceAmount);
@@ -96,10 +108,14 @@ public class InfluenceController : MonoBehaviour
             if (_influenceType == InfluenceType.blood)
             {
                 bloodController.safeZone = true;
+                influenceDisplay.gameObject.SetActive(true);
+                influenceDisplay.SetText("Influence: " + _influenceAmount);
+                active = true;
             }
             else if (_influenceType == InfluenceType.holy)
             {
                 bloodController.dangerZone = true;
+                
             }
         }
     }
@@ -113,6 +129,8 @@ public class InfluenceController : MonoBehaviour
             if (_influenceType == InfluenceType.blood)
             {
                 bloodController.safeZone = false;
+                influenceDisplay.gameObject.SetActive(false);
+                active = false;
             }
             else if (_influenceType == InfluenceType.holy)
             {
