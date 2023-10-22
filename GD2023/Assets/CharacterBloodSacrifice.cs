@@ -67,7 +67,7 @@ public class CharacterBloodSacrifice : MonoBehaviour
     public void Sacrificed(int amount)
     {
         OnSacrifice.Invoke(amount);
-        _influenceController.UpdateInfluence(amount);
+        _influenceController.UpdateInfluence(amount/10);
 
         canSacrifice = false;
 
