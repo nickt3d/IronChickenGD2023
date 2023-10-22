@@ -141,6 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6579915833880558170}
   - component: {fileID: 4061856780555790122}
+  - component: {fileID: 3098917416477639522}
   m_Layer: 0
   m_Name: ActivationZone
   m_TagString: Untagged
@@ -184,6 +185,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 3.25
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &3098917416477639522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170389537808180895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e3f0a1e3e57104eb7a7901912cb27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altarType: 0
+  bloodCost: 0
 --- !u!1001 &6376640861103976597
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -71,7 +71,7 @@ public class BloodController : MonoBehaviour
         {
             if (decayTimer <= 0)
             {
-                health.ReceiveHealth(1f, null);
+                
                 decayTimer = 1;
             }
         }
@@ -86,9 +86,12 @@ public class BloodController : MonoBehaviour
 
     public void RemoveBlood(int amount)
     {
-        _bloodAmount = Mathf.Clamp(_bloodAmount-amount, 0, MaximumBlood);
-        Debug.Log("Blood Remaining: " + _bloodAmount);
-        UpdateBloodBar();
+        if (_bloodAmount > 0)
+        {
+            _bloodAmount = Mathf.Clamp(_bloodAmount - amount, 0, MaximumBlood);
+            health.ReceiveHealth(amount, null);
+            UpdateBloodBar();
+        }
     }
 
     public float GetAmount()
@@ -106,5 +109,10 @@ public class BloodController : MonoBehaviour
         bloodBar.maxValue = MaximumBlood;
         bloodBar.value = _bloodAmount;
         bloodBar.GetComponentInChildren<TextMeshProUGUI>().SetText(_bloodAmount + "/" + 50);
+    }
+
+    public void IncreaseMaxBlood(int addedAmount)
+    {
+        MaximumBlood += addedAmount;
     }
 }

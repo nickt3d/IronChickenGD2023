@@ -1859,11 +1859,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa1308a98c25ed4fb8111cbb20b5b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaximumHealth: 50
   safeZone: 0
   dangerZone: 0
-  CurrentHealth: 0
-  PlayerID: Player1
+  bloodBar: {fileID: 0}
+  health: {fileID: 5136672968084819112}
 --- !u!1 &4523139366846529165
 GameObject:
   m_ObjectHideFlags: 0
