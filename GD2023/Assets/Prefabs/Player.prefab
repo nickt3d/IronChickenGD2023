@@ -1073,6 +1073,7 @@ GameObject:
   - component: {fileID: 6286386109910526796}
   - component: {fileID: 7076382850987411595}
   - component: {fileID: 8664715901775596375}
+  - component: {fileID: 7172804658300242818}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1571,7 +1572,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  RunSpeed: 16
+  RunSpeed: 10
   AutoRun: 0
   AutoRunThreshold: 0.6
 --- !u!114 &7603888167266281179
@@ -1833,6 +1834,18 @@ MonoBehaviour:
   PhysicsInteractionsRaycastLength: 0.05
   PhysicsInteractionsRaycastOffset: {x: 0, y: 0, z: 0}
   PushPower: 1850
+--- !u!114 &7172804658300242818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd115e00f0af5a442aad6fce42ec8e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4523139366846529165
 GameObject:
   m_ObjectHideFlags: 0

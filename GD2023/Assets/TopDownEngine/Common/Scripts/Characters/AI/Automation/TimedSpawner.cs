@@ -12,6 +12,8 @@ namespace MoreMountains.TopDownEngine
 	[AddComponentMenu("TopDown Engine/Character/AI/Automation/TimedSpawner")]
 	public class TimedSpawner : TopDownMonoBehaviour 
 	{
+
+		//[SerializeField] MMObjectPooler
 		/// the object pooler associated to this spawner
 		public MMObjectPooler ObjectPooler { get; set; }
 		
@@ -25,14 +27,19 @@ namespace MoreMountains.TopDownEngine
 		/// the maximum frequency possible, in seconds
 		[Tooltip("the maximum frequency possible, in seconds")]
 		public float MaxFrequency = 1f;
+        //Max number of spawns possible
+        [Tooltip("the maximum number of spawns possible, set to 0 for infinite spawns")]
+        public int MaxSpawnAmount = 5;
 
-		[Header("Debug")]
+        [Header("Debug")]
 		[MMInspectorButton("ToggleSpawn")]
 		/// a test button to spawn an object
 		public bool CanSpawnButton;
 
 		protected float _lastSpawnTimestamp = 0f;
 		protected float _nextFrequency = 0f;
+
+		protected int _enemiesSpawned = 0;
 
 		/// <summary>
 		/// On Start we initialize our spawner
@@ -80,6 +87,11 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected virtual void Spawn()
 		{
+			if (_enemiesSpawned >= MaxSpawnAmount && MaxSpawnAmount != 0)
+			{
+				return;
+			}
+
 			GameObject nextGameObject = ObjectPooler.GetPooledGameObject();
 
 			// mandatory checks
@@ -106,6 +118,8 @@ namespace MoreMountains.TopDownEngine
 			// we reset our timer and determine the next frequency
 			_lastSpawnTimestamp = Time.time;
 			DetermineNextFrequency ();
+
+			_enemiesSpawned++;
 		}
 
 		/// <summary>

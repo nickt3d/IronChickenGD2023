@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 6815043796240417689}
   - component: {fileID: 403792075601340757}
   - component: {fileID: 2002767801415826100}
+  - component: {fileID: 5321795892892766430}
   m_Layer: 13
   m_Name: Human Slasher
   m_TagString: Untagged
@@ -734,6 +735,26 @@ MonoBehaviour:
   AimOrigin: 0
   ShootOffset: {x: 0, y: 0, z: 0}
   LockVerticalAim: 0
+--- !u!114 &5321795892892766430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852789448940122774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72de0b0360096ea41a18d17864ecb963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoundsBasedOn: 3
+  ExecuteOnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  ExecuteOnDisable:
+    m_PersistentCalls:
+      m_Calls: []
+  LifeTime: 0
 --- !u!1 &6940390801562318046
 GameObject:
   m_ObjectHideFlags: 0
