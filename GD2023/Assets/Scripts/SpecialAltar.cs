@@ -1,17 +1,22 @@
 using MoreMountains.TopDownEngine;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpecialAltar : MonoBehaviour
 {
     [SerializeField] SpecialAltarType altarType;
     [SerializeField] int bloodCost;
+    [SerializeField] TextMeshProUGUI costText;
+
+    bool altarUsed;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        costText.text = bloodCost.ToString();
+        altarUsed = false;
     }
 
     // Update is called once per frame
@@ -24,9 +29,7 @@ public class SpecialAltar : MonoBehaviour
     {
         if (other.TryGetComponent<BloodController>(out var bloodController))
         {
-            print("Blood: " + bloodController.GetAmount());
-
-            if (bloodController.GetAmount() >= bloodCost)
+            if (bloodController.GetAmount() >= bloodCost && !altarUsed)
             {
                 bloodController.RemoveBlood(bloodCost);
 
@@ -49,6 +52,10 @@ public class SpecialAltar : MonoBehaviour
 
                         break;
                 }
+
+                altarUsed = true;
+
+                costText.text = "";
             }
         }
         
