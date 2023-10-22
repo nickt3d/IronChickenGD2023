@@ -1,14 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Tools;
+using MoreMountains.TopDownEngine;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BloodController : MonoBehaviour
 {
 
-    private int _bloodAmount; 
+    private float _bloodAmount; 
 
-    private int _bloodMax = 50; //This can be increased by sacrificing blood at special alters
+    private float MaximumBlood = 50; //This can be increased by sacrificing blood at special alters
 
     private float decayTimer;
 
@@ -16,6 +19,9 @@ public class BloodController : MonoBehaviour
 
     public bool safeZone;
     public bool dangerZone;
+
+    [SerializeField]
+    private Slider bloodBar;
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +31,14 @@ public class BloodController : MonoBehaviour
         OnSacrifice += RemoveBlood;
         safeZone = false;
         dangerZone = false;
+        
+        bloodBar = GameObject.Find("BloodBarUI").GetComponent<Slider>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //Decay Blood
         if (!safeZone)
         {
@@ -62,17 +71,30 @@ public class BloodController : MonoBehaviour
 
     public void AddBlood(int amount)
     {
-        _bloodAmount = Mathf.Clamp(_bloodAmount+amount, 0, _bloodMax);
+        _bloodAmount = Mathf.Clamp(_bloodAmount+amount, 0, MaximumBlood);
+        UpdateBloodBar();
     }
 
     public void RemoveBlood(int amount)
     {
-        _bloodAmount = Mathf.Clamp(_bloodAmount-amount, 0, _bloodMax);
+        _bloodAmount = Mathf.Clamp(_bloodAmount-amount, 0, MaximumBlood);
         Debug.Log("Blood Remaining: " + _bloodAmount);
+        UpdateBloodBar();
     }
 
-    public int GetAmount()
+    public float GetAmount()
     {
         return _bloodAmount;
+    }
+    
+    public void UpdateBloodBar()
+    {
+        if (bloodBar == null)
+        {
+            bloodBar = GameObject.Find("BloodBarUI").GetComponent<Slider>();
+        }
+        bloodBar.minValue = 0;
+        bloodBar.maxValue = MaximumBlood;
+        bloodBar.value = _bloodAmount;
     }
 }

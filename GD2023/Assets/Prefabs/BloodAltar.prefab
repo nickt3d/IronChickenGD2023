@@ -160,7 +160,7 @@ MonoBehaviour:
     type: 2}
   holyInfluenceVolume: {fileID: 11400000, guid: 8f078ba0b5e2d0b4abc0d8d1fc040c9b,
     type: 2}
-  SacrificeZone: {fileID: 0}
+  influenceDisplay: {fileID: 0}
 --- !u!136 &8484622031600086242
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 0
-  priority: 0
+  priority: 10
   blendDistance: 2
   weight: 1
   sharedProfile: {fileID: 11400000, guid: bbb4164db0b97e449bfd7281eb4409e4, type: 2}
