@@ -24,6 +24,8 @@ public class BloodController : MonoBehaviour
     [SerializeField]
     private Slider bloodBar;
 
+    private Health health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,8 @@ public class BloodController : MonoBehaviour
         safeZone = false;
         dangerZone = false;
         
-        bloodBar = GameObject.Find("BloodBarUI").GetComponent<Slider>(); 
+        bloodBar = GameObject.Find("BloodBarUI").GetComponent<Slider>();
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -49,25 +52,30 @@ public class BloodController : MonoBehaviour
                 {
                     RemoveBlood(1);
                     decayTimer = 0.15f;
+                    health.CurrentHealth -= 1;
                 }
                 else
                 {
                     RemoveBlood(1);
                     decayTimer = 1;
+                    if (_bloodAmount == 0)
+                    {
+                        health.CurrentHealth -= 1;
+                    }
                 }
 
                 
             }
-            else
-            {
-                decayTimer -= Time.deltaTime;
-            }
         }
         else
         {
-            decayTimer = 2;
+            if (decayTimer <= 0)
+            {
+                health.CurrentHealth += 1;
+                decayTimer = 1;
+            }
         }
-
+        decayTimer -= Time.deltaTime;
     }
 
     public void AddBlood(int amount)
