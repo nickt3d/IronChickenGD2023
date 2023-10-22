@@ -58,7 +58,6 @@ public class BloodController : MonoBehaviour
             decayTimer = 3;
         }
 
-
     }
 
     public void AddBlood(int amount)
