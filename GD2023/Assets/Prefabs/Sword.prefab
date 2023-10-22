@@ -5285,7 +5285,7 @@ MonoBehaviour:
   WeaponCurrentlyActive: 1
   InputAuthorized: 1
   TriggerMode: 0
-  DelayBeforeUse: 2
+  DelayBeforeUse: 0
   DelayBeforeUseReleaseInterruption: 1
   TimeBetweenUses: 1
   TimeBetweenUsesReleaseInterruption: 1
@@ -5359,7 +5359,7 @@ MonoBehaviour:
   MinDamageCaused: 10
   MaxDamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 0, z: 50}
+  KnockbackForce: {x: 0, y: 0, z: 110}
   KnockbackDirection: 2
   InvincibilityDuration: 0.5
   CanDamageOwner: 0
