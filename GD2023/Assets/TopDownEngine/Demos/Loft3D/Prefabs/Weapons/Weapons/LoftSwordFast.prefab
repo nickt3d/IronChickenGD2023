@@ -54,7 +54,7 @@ MonoBehaviour:
   TriggerMode: 0
   DelayBeforeUse: 0
   DelayBeforeUseReleaseInterruption: 0
-  TimeBetweenUses: 0.5
+  TimeBetweenUses: 1
   TimeBetweenUsesReleaseInterruption: 0
   UseBurstMode: 0
   BurstLength: 3
@@ -69,7 +69,7 @@ MonoBehaviour:
   AutoDestroyWhenEmptyDelay: 1
   PreventReloadIfAmmoEmpty: 0
   CurrentAmmoLoaded: 30
-  WeaponAttachmentOffset: {x: 0, y: 0.31, z: 0}
+  WeaponAttachmentOffset: {x: 0, y: 0, z: 0}
   FlipWeaponOnCharacterFlip: 0
   RightFacingFlipValue: {x: 1, y: 1, z: 1}
   LeftFacingFlipValue: {x: -1, y: 1, z: 1}
@@ -112,7 +112,7 @@ MonoBehaviour:
   MeleeDamageAreaMode: 0
   DamageAreaShape: 2
   AreaOffset: {x: 0, y: 0, z: 0}
-  AreaSize: {x: 4, y: 2, z: 4}
+  AreaSize: {x: 4, y: 0, z: 4}
   TriggerFilter: 195
   HitDamageableFeedback: {fileID: 0}
   HitNonDamageableFeedback: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   ActiveDuration: 0.1
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 8448
+    m_Bits: 1280
   MinDamageCaused: 2
   MaxDamageCaused: 2
   Knockback: 1
@@ -147,7 +147,7 @@ MonoBehaviour:
   TriggerMode: 0
   DelayBeforeUse: 0
   DelayBeforeUseReleaseInterruption: 0
-  TimeBetweenUses: 0.5
+  TimeBetweenUses: 1
   TimeBetweenUsesReleaseInterruption: 0
   UseBurstMode: 0
   BurstLength: 3
@@ -162,7 +162,7 @@ MonoBehaviour:
   AutoDestroyWhenEmptyDelay: 1
   PreventReloadIfAmmoEmpty: 0
   CurrentAmmoLoaded: 30
-  WeaponAttachmentOffset: {x: 0, y: 0.31, z: 0}
+  WeaponAttachmentOffset: {x: 0, y: 0, z: 0}
   FlipWeaponOnCharacterFlip: 0
   RightFacingFlipValue: {x: 1, y: 1, z: 1}
   LeftFacingFlipValue: {x: -1, y: 1, z: 1}
@@ -214,7 +214,7 @@ MonoBehaviour:
   ActiveDuration: 0.066
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 8448
+    m_Bits: 1280
   MinDamageCaused: 2
   MaxDamageCaused: 2
   Knockback: 1
@@ -307,7 +307,7 @@ MonoBehaviour:
   ActiveDuration: 0.15
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 8448
+    m_Bits: 1280
   MinDamageCaused: 10
   MaxDamageCaused: 10
   Knockback: 1
