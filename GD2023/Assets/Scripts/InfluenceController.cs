@@ -90,16 +90,34 @@ public class InfluenceController : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
+            var bloodController = collider.GetComponent<BloodController>();
+            
             //Make the player stop losing blood, and has power boost
-            collider.GetComponent<BloodController>().safeZone = true;
+            if (_influenceType == InfluenceType.blood)
+            {
+                bloodController.safeZone = true;
+            }
+            else if (_influenceType == InfluenceType.holy)
+            {
+                bloodController.dangerZone = true;
+            }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider collider)
     {
-        if (other.tag == "Player")
+        if (collider.tag == "Player")
         {
-            other.GetComponent<BloodController>().safeZone = false;
+            var bloodController = collider.GetComponent<BloodController>();
+            
+            if (_influenceType == InfluenceType.blood)
+            {
+                bloodController.safeZone = false;
+            }
+            else if (_influenceType == InfluenceType.holy)
+            {
+                bloodController.dangerZone = false;
+            }
         }
     }
 

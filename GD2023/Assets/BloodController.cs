@@ -15,6 +15,7 @@ public class BloodController : MonoBehaviour
     public Action<int> OnSacrifice;
 
     public bool safeZone;
+    public bool dangerZone;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class BloodController : MonoBehaviour
         decayTimer = 3;
         OnSacrifice += RemoveBlood;
         safeZone = false;
+        dangerZone = false;
     }
 
     // Update is called once per frame
@@ -33,8 +35,18 @@ public class BloodController : MonoBehaviour
         {
             if (decayTimer <= 0)
             {
-                RemoveBlood(1);
-                decayTimer = 3;
+                if (dangerZone)
+                {
+                    RemoveBlood(1);
+                    decayTimer = 1;
+                }
+                else
+                {
+                    RemoveBlood(1);
+                    decayTimer = 3;
+                }
+
+                
             }
             else
             {
@@ -45,6 +57,8 @@ public class BloodController : MonoBehaviour
         {
             decayTimer = 3;
         }
+
+
     }
 
     public void AddBlood(int amount)
