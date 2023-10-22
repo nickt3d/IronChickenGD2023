@@ -15,10 +15,15 @@ public class CharacterBloodSacrifice : MonoBehaviour
     private bool canSacrifice = false;
 
     public Action OnSacrifice;
+
+[SerializeField]
+    private ParticleSystem BloodExplode;
+
     private void Start()
     {
         cost = 10; //pull the cost from the influence controller
         canSacrifice = false;
+        Instantiate(BloodExplode, transform);
     }
 
     void Update()
@@ -39,8 +44,10 @@ public class CharacterBloodSacrifice : MonoBehaviour
             var playerBlood = collider.GetComponent<BloodController>();
             if (playerBlood.GetAmount() >= cost)
             {
+                
                 OnSacrifice += () => playerBlood.OnSacrifice.Invoke(cost);
                 canSacrifice = true;
+                BloodExplode.Play();
             }
             else
             {
@@ -64,6 +71,8 @@ public class CharacterBloodSacrifice : MonoBehaviour
         _influenceController.UpdateInfluence(5);
         
         canSacrifice = false;
+        
+        
     }
 
 }
