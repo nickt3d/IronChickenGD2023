@@ -1572,7 +1572,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  RunSpeed: 16
+  RunSpeed: 10
   AutoRun: 0
   AutoRunThreshold: 0.6
 --- !u!114 &7603888167266281179
