@@ -13,4 +13,10 @@ public class ButtonFunctions : MonoBehaviour
     {
         AudioManager.Instance.Play("BloodSplat");
     }
+
+    public void PlayButton()
+    {
+        AudioManager.Instance.Stop("Theme");
+        AudioManager.Instance.Play("GameMusic");
+    }
 }
