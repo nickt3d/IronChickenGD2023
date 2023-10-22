@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class SpawnOrbOnDeath : MonoBehaviour
 {
+    public int EnemyTier;
     public BloodOrbCollectable BloodOrb;
 
     void Awake()
@@ -16,6 +17,8 @@ public class SpawnOrbOnDeath : MonoBehaviour
 
     public void OnDeath()
     {
+        BloodOrb.value = EnemyTier * 5;
+
         var orb = Instantiate(BloodOrb);
         orb.transform.position = transform.position;
     }

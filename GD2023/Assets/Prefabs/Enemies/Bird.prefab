@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31e17931c8014c478aaa37c2d63770a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyTier: 1
   BloodOrb: {fileID: 2407984641741950552, guid: ac4222fe4a56c334a966c0d9e47be7f6,
     type: 3}
 --- !u!114 &-545515049746578895
