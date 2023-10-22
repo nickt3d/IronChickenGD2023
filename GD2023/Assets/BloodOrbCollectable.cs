@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class BloodOrbCollectable : MonoBehaviour
 {
-    private int value;
-
-    void Awake()
-    {
-        value = Random.Range(5, 10);
-    }
+    public int value;
 
     void OnTriggerEnter(Collider collider)
     {

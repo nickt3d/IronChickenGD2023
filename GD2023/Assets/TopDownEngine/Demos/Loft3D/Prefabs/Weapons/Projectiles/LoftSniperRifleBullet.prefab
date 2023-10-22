@@ -5074,7 +5074,7 @@ MonoBehaviour:
   DurationBetweenRepeats: 1
   DamageOverTimeInterruptible: 1
   RepeatedDamageType: {fileID: 0}
-  DamageTakenHealth: {fileID: 0}
+  DamageTakenHealth: {fileID: 114102311241470466}
   DamageTakenEveryTime: 1
   DamageTakenDamageable: 0
   DamageTakenNonDamageable: 0
