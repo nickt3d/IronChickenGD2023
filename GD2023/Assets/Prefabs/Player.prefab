@@ -1448,8 +1448,8 @@ MonoBehaviour:
   BlockingWeaponStates: 
   JumpProportionalToPress: 1
   MinimumPressTime: 0.4
-  JumpForce: 800
-  JumpHeight: 4
+  JumpForce: 500
+  JumpHeight: 3
   CanJumpOnTooSteepSlopes: 1
   ResetJumpsOnTooSteepSlopes: 0
   NumberOfJumps: 1
@@ -1542,11 +1542,11 @@ MonoBehaviour:
   InputAuthorized: 1
   AnalogInput: 0
   ScriptDrivenInput: 0
-  WalkSpeed: 6
+  WalkSpeed: 3
   ShouldSetMovement: 1
   IdleThreshold: 0.05
-  Acceleration: 10
-  Deceleration: 10
+  Acceleration: 3
+  Deceleration: 5
   InterpolateMovementSpeed: 0
   WalkParticles: []
   TouchTheGroundParticles: []
@@ -1572,7 +1572,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  RunSpeed: 10
+  RunSpeed: 6
   AutoRun: 0
   AutoRunThreshold: 0.6
 --- !u!114 &7603888167266281179
