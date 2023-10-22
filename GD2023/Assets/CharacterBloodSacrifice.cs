@@ -62,7 +62,7 @@ public class CharacterBloodSacrifice : MonoBehaviour
     {
         OnSacrifice.Invoke();
         _influenceController.UpdateInfluence(5);
-        Debug.Log("Sacrificed Blood");
+        
         canSacrifice = false;
     }
 
