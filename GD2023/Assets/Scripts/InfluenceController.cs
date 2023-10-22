@@ -32,7 +32,7 @@ public class InfluenceController : MonoBehaviour
 
     private int decay = 1;
 
-    [SerializeField] private SphereCollider SacrificeZone;
+    //[SerializeField] private SphereCollider SacrificeZone;
 
     public Action<int> OnUpgrade;
     
@@ -65,6 +65,11 @@ public class InfluenceController : MonoBehaviour
         _influenceArea.radius = _influenceAmount;
         var shape = _influenceParticles.shape;
         shape.radius = _influenceAmount;
+
+        if (amount > 0)
+        {
+            Debug.Log("Influence Increased to: " + _influenceAmount);
+        }
     }
 
     void Update()
@@ -86,9 +91,17 @@ public class InfluenceController : MonoBehaviour
         if (collider.tag == "Player")
         {
             //Make the player stop losing blood, and has power boost
+            collider.GetComponent<BloodController>().safeZone = true;
         }
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.GetComponent<BloodController>().safeZone = false;
+        }
+    }
 
     void DecayInfluence()
     {
