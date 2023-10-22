@@ -14,7 +14,7 @@ public class CharacterBloodSacrifice : MonoBehaviour
 
     private bool canSacrifice = false;
 
-    public Action<int> OnSacrifice;
+    //public Action<int> OnSacrifice;
 
 [SerializeField]
     private ParticleSystem BloodExplode;
@@ -59,19 +59,21 @@ public class CharacterBloodSacrifice : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            OnSacrifice = null;
+            //OnSacrifice = null;
             canSacrifice = false;
         }
     }
 
     public void Sacrificed(int amount)
     {
-        OnSacrifice.Invoke(amount);
-        _influenceController.UpdateInfluence(amount/10);
+        //if (OnSacrifice != null)
+        //{
+        //    OnSacrifice.Invoke(amount);
+        //}
+        _influenceController.UpdateInfluence(amount/5);
 
         canSacrifice = false;
 
 
     }
-
 }
