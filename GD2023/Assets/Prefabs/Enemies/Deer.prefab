@@ -444,8 +444,8 @@ MonoBehaviour:
   Model: {fileID: 0}
   CurrentHealth: 100
   Invulnerable: 0
-  InitialHealth: 10
-  MaximumHealth: 100
+  InitialHealth: 30
+  MaximumHealth: 30
   ResetHealthOnEnable: 1
   ImmuneToDamage: 0
   DamageMMFeedbacks: {fileID: 0}
@@ -718,6 +718,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5a03bc738e5820a49b277aed2390b4b3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a725822c85cde414ea86d0263c340151, type: 2}
     - target: {fileID: 919132149155446097, guid: 5a03bc738e5820a49b277aed2390b4b3,
         type: 3}
       propertyPath: m_Name
