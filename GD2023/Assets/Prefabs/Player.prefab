@@ -1074,6 +1074,7 @@ GameObject:
   - component: {fileID: 7076382850987411595}
   - component: {fileID: 8664715901775596375}
   - component: {fileID: 7172804658300242818}
+  - component: {fileID: 9129461724168310925}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -1844,6 +1845,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd115e00f0af5a442aad6fce42ec8e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9129461724168310925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416926081852918481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa1308a98c25ed4fb8111cbb20b5b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4523139366846529165
@@ -3638,6 +3651,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3893294197879345259}
     m_Modifications:
+    - target: {fileID: 1242660209070884, guid: f933c455b886ad644b60dc415ab31bb3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1518963424396410, guid: f933c455b886ad644b60dc415ab31bb3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3691,6 +3708,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 45f4d42428f5ad144b6938738de270a0, type: 2}
+    - target: {fileID: 95878174872389186, guid: f933c455b886ad644b60dc415ab31bb3,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

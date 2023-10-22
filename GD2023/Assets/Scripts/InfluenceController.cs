@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class InfluenceController : MonoBehaviour
     private float _influenceAmount;
     private CapsuleCollider _influenceArea;
     private Volume _influenceVolume;
+    private ParticleSystem _influenceParticles;
+    
     
     //Clamp influence in this range
     private float _minInfluence = 25f;
@@ -27,7 +30,11 @@ public class InfluenceController : MonoBehaviour
 
     private float influenceDecayTimer;
 
-    private float decay = 1f;
+    private int decay = 1;
+
+    [SerializeField] private SphereCollider SacrificeZone;
+
+    public Action<int> OnUpgrade;
     
     void Start()
     {
@@ -36,6 +43,7 @@ public class InfluenceController : MonoBehaviour
         _influenceAmount = 25f;
         _influenceVolume = GetComponent<Volume>();
         _influenceArea = GetComponent<CapsuleCollider>();
+        _influenceParticles = GetComponentInChildren<ParticleSystem>();
 
         if (_influenceType == InfluenceType.holy)
         {
@@ -47,13 +55,16 @@ public class InfluenceController : MonoBehaviour
         }
 
         influenceDecayTimer = 0;
+
+        OnUpgrade += UpdateInfluence;
     }
 
-    public void UpdateInfluence(float amount)
+    public void UpdateInfluence(int amount)
     {
         _influenceAmount = Mathf.Clamp(_influenceAmount+amount, _minInfluence, _maxInfluence);
         _influenceArea.radius = _influenceAmount;
-        areadisplay.localScale = Vector3.one * (_influenceAmount * 2);
+        var shape = _influenceParticles.shape;
+        shape.radius = _influenceAmount;
     }
 
     void Update()
@@ -70,10 +81,18 @@ public class InfluenceController : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "Player")
+        {
+            //Make the player stop losing blood, and has power boost
+        }
+    }
+    
+
     void DecayInfluence()
     {
         UpdateInfluence(-decay);
-
     }
 
 }
