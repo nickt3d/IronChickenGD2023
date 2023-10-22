@@ -1713,7 +1713,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: GameMusic
-    clip: {fileID: 8300000, guid: 5fce84b358ebe9544bb0ee5503555553, type: 3}
+    clip: {fileID: 8300000, guid: f45398386b5acb346aa7801276a1afe7, type: 3}
     volume: 1
     pitch: 1
     loop: 1
