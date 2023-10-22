@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 enum InfluenceType
 {
@@ -10,29 +11,69 @@ enum InfluenceType
 }
 public class InfluenceController : MonoBehaviour
 {
-    [SerializeField]
-    private InfluenceType _influenceType;
-    private float _influence;
+    [SerializeField] private InfluenceType _influenceType;
+    [SerializeField] private Transform areadisplay; // This is either the light beams of the blood clouds depending on influence type
+    
+    [SerializeField] private VolumeProfile bloodInfluenceVolume;
+    [SerializeField] private VolumeProfile holyInfluenceVolume;
+    
+    private float _influenceAmount;
+    private CapsuleCollider _influenceArea;
+    private Volume _influenceVolume;
+    
+    //Clamp influence in this range
+    private float _minInfluence = 25f;
+    private float _maxInfluence = 100f;
 
-    private SphereCollider _influenceArea;
+    private float influenceDecayTimer;
+
+    private float decay = 1f;
     
     void Start()
     {
         //TODO: Load influence from save
 
-        _influence = 0;
+        _influenceAmount = 25f;
+        _influenceVolume = GetComponent<Volume>();
+        _influenceArea = GetComponent<CapsuleCollider>();
 
-        _influenceArea = GetComponent<SphereCollider>();
+        if (_influenceType == InfluenceType.holy)
+        {
+            _influenceVolume.profile = holyInfluenceVolume;
+        }
+        else
+        {
+            _influenceVolume.profile = bloodInfluenceVolume;
+        }
+
+        influenceDecayTimer = 0;
     }
 
-    public void IncreaseInfluence(float amount)
+    public void UpdateInfluence(float amount)
     {
-        _influence += amount;
+        _influenceAmount = Mathf.Clamp(_influenceAmount+amount, _minInfluence, _maxInfluence);
+        _influenceArea.radius = _influenceAmount;
+        areadisplay.localScale = Vector3.one * (_influenceAmount * 2);
     }
 
-    public void DecreaseInfluence()
+    void Update()
     {
-        
+        if (influenceDecayTimer >= _influenceAmount)
+        {
+            DecayInfluence();
+            //reset timer
+            influenceDecayTimer = 0f;
+        }
+        else
+        {
+            influenceDecayTimer += Time.deltaTime;
+        }
     }
-    
+
+    void DecayInfluence()
+    {
+        UpdateInfluence(-decay);
+
+    }
+
 }
