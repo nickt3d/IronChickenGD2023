@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,12 +48,12 @@ public class BloodController : MonoBehaviour
                 if (dangerZone)
                 {
                     RemoveBlood(1);
-                    decayTimer = 1;
+                    decayTimer = 0.15f;
                 }
                 else
                 {
                     RemoveBlood(1);
-                    decayTimer = 3;
+                    decayTimer = 1;
                 }
 
                 
@@ -64,7 +65,7 @@ public class BloodController : MonoBehaviour
         }
         else
         {
-            decayTimer = 3;
+            decayTimer = 2;
         }
 
     }
@@ -96,5 +97,6 @@ public class BloodController : MonoBehaviour
         bloodBar.minValue = 0;
         bloodBar.maxValue = MaximumBlood;
         bloodBar.value = _bloodAmount;
+        bloodBar.GetComponentInChildren<TextMeshProUGUI>().SetText(_bloodAmount + "/" + 50);
     }
 }
